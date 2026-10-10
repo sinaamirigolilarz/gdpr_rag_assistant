@@ -17,6 +17,10 @@ from typing import Protocol
 from .config import Settings
 
 _TEMPERATURE = 0.0
+# Smooth over transient gateway errors (502/503/504) from the API provider
+# with exponential-backoff retries and a generous per-request timeout.
+_MAX_RETRIES = 5
+_REQUEST_TIMEOUT_SECONDS = 60.0
 
 
 class LLMClient(Protocol):
@@ -31,7 +35,12 @@ class OpenAICompatibleClient:
     def __init__(self, api_key: str, model: str, base_url: str | None = None):
         from openai import OpenAI
 
-        self._client = OpenAI(api_key=api_key, base_url=base_url)
+        self._client = OpenAI(
+            api_key=api_key,
+            base_url=base_url,
+            max_retries=_MAX_RETRIES,
+            timeout=_REQUEST_TIMEOUT_SECONDS,
+        )
         self._model = model
 
     def complete(self, system_prompt: str, user_prompt: str) -> str:
