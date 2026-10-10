@@ -33,9 +33,9 @@ def _prefixes_for(model_name: str) -> tuple[str, str]:
 class EmbeddingModel:
     """Encodes passages and queries into L2-normalised vectors (cosine-ready)."""
 
-    def __init__(self, model_name: str) -> None:
+    def __init__(self, model_name: str, local_files_only: bool = False) -> None:
         self.model_name = model_name
-        self._model = SentenceTransformer(model_name)
+        self._model = SentenceTransformer(model_name, local_files_only=local_files_only)
         self._query_prefix, self._passage_prefix = _prefixes_for(model_name)
 
     @property

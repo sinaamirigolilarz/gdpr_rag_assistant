@@ -42,6 +42,11 @@ class Settings:
     retrieval_mode: str = "dense"
     top_k: int = 5
 
+    # Load the embedding model from the local Hugging Face cache only, skipping
+    # the online update check. Useful on restricted/offline networks once the
+    # model has been downloaded. Requires the model to already be cached.
+    hf_local_only: bool = False
+
     # Answer generation.
     llm_backend: str = "openai"
     openai_api_key: str | None = None
@@ -61,6 +66,13 @@ class Settings:
         return self.data_dir / "articles.json"
 
 
+def _env_bool(name: str, default: bool) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in ("1", "true", "yes", "on")
+
+
 def load_settings() -> Settings:
     """Build :class:`Settings` from a local ``.env`` file and the environment."""
     load_dotenv(PROJECT_ROOT / ".env")
@@ -70,6 +82,7 @@ def load_settings() -> Settings:
         chunk_strategy=os.getenv("CHUNK_STRATEGY", Settings.chunk_strategy),
         retrieval_mode=os.getenv("RETRIEVAL_MODE", Settings.retrieval_mode),
         top_k=int(os.getenv("TOP_K", Settings.top_k)),
+        hf_local_only=_env_bool("HF_LOCAL_ONLY", Settings.hf_local_only),
         llm_backend=os.getenv("LLM_BACKEND", Settings.llm_backend),
         openai_api_key=os.getenv("OPENAI_API_KEY"),
         openai_base_url=os.getenv("OPENAI_BASE_URL"),

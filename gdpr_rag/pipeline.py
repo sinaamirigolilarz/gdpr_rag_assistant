@@ -27,7 +27,7 @@ def build_index(
     articles = load_or_ingest(settings)
     chunks = build_chunks(articles, strategy)
 
-    embedder = EmbeddingModel(embedding_model)
+    embedder = EmbeddingModel(embedding_model, local_files_only=settings.hf_local_only)
     embeddings = embedder.encode_passages([chunk.text for chunk in chunks])
 
     meta = {
@@ -45,5 +45,5 @@ def load_retriever(settings: Settings) -> Retriever:
     """Load the persisted index and build a retriever matching its embed model."""
     store = VectorStore.load(settings.index_dir)
     embedding_model = store.meta.get("embedding_model", settings.embedding_model)
-    embedder = EmbeddingModel(embedding_model)
+    embedder = EmbeddingModel(embedding_model, local_files_only=settings.hf_local_only)
     return Retriever(store, embedder, mode=settings.retrieval_mode)

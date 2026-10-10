@@ -270,7 +270,9 @@ def run_evaluation(settings: Settings, questions_path: str | None = None) -> Non
     """Execute the full evaluation and print + persist a markdown report."""
     questions = load_questions(Path(questions_path) if questions_path else None)
     articles = load_or_ingest(settings)
-    embedder = EmbeddingModel(settings.embedding_model)
+    embedder = EmbeddingModel(
+        settings.embedding_model, local_files_only=settings.hf_local_only
+    )
     k = settings.top_k
 
     chunking_recall = {
