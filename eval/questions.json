@@ -1,0 +1,110 @@
+{
+  "description": "Evaluation set for GDPR RAG over Articles 1-23. gold_articles lists the article(s) that answer the question; an empty list means the answer is NOT in Articles 1-23 and the system should reply 'Not found in the GDPR'. style is one of conversational | direct | out_of_scope.",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Can my old employer keep my CV forever?",
+      "gold_articles": [5],
+      "in_scope": true,
+      "style": "conversational"
+    },
+    {
+      "id": 2,
+      "question": "How do I get a company to delete all the information they hold about me?",
+      "gold_articles": [17],
+      "in_scope": true,
+      "style": "conversational"
+    },
+    {
+      "id": 3,
+      "question": "I want to take all my data from one app and move it to a different service. Am I allowed to?",
+      "gold_articles": [20],
+      "in_scope": true,
+      "style": "conversational"
+    },
+    {
+      "id": 4,
+      "question": "A website rejected my loan application automatically with no human looking at it. What does the law say about that?",
+      "gold_articles": [22],
+      "in_scope": true,
+      "style": "conversational"
+    },
+    {
+      "id": 5,
+      "question": "Do I have the right to find out what data a company is holding on me?",
+      "gold_articles": [15],
+      "in_scope": true,
+      "style": "conversational"
+    },
+    {
+      "id": 6,
+      "question": "A shop has the wrong address and birthday for me. Can I make them correct it?",
+      "gold_articles": [16],
+      "in_scope": true,
+      "style": "conversational"
+    },
+    {
+      "id": 7,
+      "question": "What conditions must be met for consent to be valid?",
+      "gold_articles": [7],
+      "in_scope": true,
+      "style": "direct"
+    },
+    {
+      "id": 8,
+      "question": "At what age can a child give their own consent for online services?",
+      "gold_articles": [8],
+      "in_scope": true,
+      "style": "direct"
+    },
+    {
+      "id": 9,
+      "question": "What are the rules for processing special categories of data such as health or religious beliefs?",
+      "gold_articles": [9],
+      "in_scope": true,
+      "style": "direct"
+    },
+    {
+      "id": 10,
+      "question": "What information must a controller provide when collecting personal data directly from the data subject?",
+      "gold_articles": [13],
+      "in_scope": true,
+      "style": "direct"
+    },
+    {
+      "id": 11,
+      "question": "What is the right to object to processing?",
+      "gold_articles": [21],
+      "in_scope": true,
+      "style": "direct"
+    },
+    {
+      "id": 12,
+      "question": "How is personal data defined in the regulation?",
+      "gold_articles": [4],
+      "in_scope": true,
+      "style": "direct"
+    },
+    {
+      "id": 13,
+      "question": "What is the minimum wage for employees in Germany?",
+      "gold_articles": [],
+      "in_scope": false,
+      "style": "out_of_scope"
+    },
+    {
+      "id": 14,
+      "question": "How large can the fines be for a company that breaks the GDPR?",
+      "gold_articles": [],
+      "in_scope": false,
+      "style": "out_of_scope"
+    },
+    {
+      "id": 15,
+      "question": "What are the responsibilities of a Data Protection Officer?",
+      "gold_articles": [],
+      "in_scope": false,
+      "style": "out_of_scope"
+    }
+  ]
+}
