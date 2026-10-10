@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Secrets (never commit real keys)
+.env
+
+# Build artifacts: vector index and raw source HTML are reproducible, do not commit
+index/
+data/raw/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

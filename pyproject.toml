@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gdpr-rag-assistant"
+version = "0.1.0"
+description = "RAG question answering over GDPR Articles 1-23 with article-level citations."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "sentence-transformers>=3.0,<4.0",
+    "faiss-cpu>=1.8",
+    "rank-bm25>=0.2.2",
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.0",
+    "openai>=1.40",
+    "ollama>=0.3",
+    "numpy>=1.26",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+gdpr-rag = "gdpr_rag.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["gdpr_rag*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

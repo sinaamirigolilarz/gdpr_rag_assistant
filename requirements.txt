@@ -1,0 +1,20 @@
+# Core RAG dependencies (CPU-only friendly)
+sentence-transformers>=3.0,<4.0   # local embedding models (bge / e5)
+faiss-cpu>=1.8                     # exact vector search, no server needed
+rank-bm25>=0.2.2                   # lexical retrieval for the hybrid bonus
+
+# Source ingestion (GDPR HTML -> structured articles)
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0
+
+# LLM backends (pluggable; pick one via .env)
+openai>=1.40                       # any OpenAI-compatible API (OpenAI, Groq, ...)
+ollama>=0.3                        # optional local backend
+
+# Utilities
+numpy>=1.26
+python-dotenv>=1.0
+
+# Testing
+pytest>=8.0
