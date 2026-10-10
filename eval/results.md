@@ -30,4 +30,4 @@ Retrieval misses (paragraph chunking):
 - Q1 (gold [5]): retrieved articles [17, 7, 10, 17, 17]
 
 Answer failures:
-- Q1 (gold Article [5]): cited [17] -> 'Your former employer must erase your CV without undue delay if it is no longer necessary f'
+- Q1 (gold Article [5]): cited [17] -> 'Not simply forever: you can request erasure if your CV is no longer necessary for the purp'
